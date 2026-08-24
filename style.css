@@ -178,3 +178,28 @@ footer {
   object-fit: cover;
   display: block;
 }
+.news-card {
+  max-width: 700px;
+  margin: 15px auto;
+  padding: 20px;
+  background: #0b1228;
+  border: 1px solid #1c3860;
+  border-left: 4px solid #4deaff;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.news-card:hover {
+  transform: translateX(8px);
+  box-shadow: 0 0 20px rgba(77, 234, 255, 0.25);
+}
+
+.news-card h3 {
+  color: #4deaff;
+  margin-bottom: 10px;
+}
+
+.news-card p {
+  color: #aebbd4;
+  line-height: 1.6;
+  }
