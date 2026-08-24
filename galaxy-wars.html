@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galaxy Wars | GameHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#games">Games</a>
+    <a href="index.html#news">News</a>
+    <a href="index.html#players">Players</a>
+  </nav>
+
+  <main>
+
+    <img src="galaxy-war.png" alt="Galaxy Wars"
+         style="width:100%; height:220px; object-fit:cover; display:block;">
+
+    <h1>GALAXY WARS</h1>
+
+    <p>
+      Command your fleet, explore distant galaxies,
+      and fight your way through an epic space battle.
+    </p>
+
+    <button onclick="startGame()">START GAME</button>
+
+    <p id="game-message"></p>
+
+  </main>
+
+  <script>
+    function startGame() {
+      document.getElementById("game-message").textContent =
+        "🚀 Galaxy Wars is starting...";
+    }
+  </script>
+
+</body>
+</html>
