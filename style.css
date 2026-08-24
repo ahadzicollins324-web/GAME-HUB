@@ -155,10 +155,12 @@ footer {
   }
 }
 .game-image {
-  width: 180px !important;
-  height: 100px !important;
+  width: 120px !important;
+  height: 70px !important;
+  max-width: 120px !important;
+  max-height: 70px !important;
   object-fit: cover;
-  border-radius: 10px;
   display: block;
-  margin: 0 auto 12px;
+  margin: 0 auto 10px;
+  border-radius: 8px;
 }
