@@ -98,7 +98,7 @@
   <h2>JOIN GAMEHUB</h2>
   <p>Ready to enter the future of gaming?</p>
 
-  <form>
+  <form onsubmit="joinGameHub(event)">
     <input type="text" placeholder="Enter your username" required>
     <input type="email" placeholder="Enter your email" required>
     <button type="submit">JOIN NOW</button>
@@ -112,5 +112,10 @@
     <p>© 2026 GameHub. All rights reserved.</p>
   </footer>
 
-</body>
+</body><script>
+function joinGameHub(event) {
+  event.preventDefault();
+  alert("🎮 Welcome to GameHub! You have joined successfully.");
+}
+</script>
 </html>
