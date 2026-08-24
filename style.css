@@ -203,16 +203,6 @@ footer {
   color: #aebbd4;
   line-height: 1.6;
   }
-.player-image {
-  width: 55px !important;
-  height: 55px !important;
-  max-width: 55px !important;
-  max-height: 55px !important;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 8px;
-  border-radius: 50%;
-}
 #players img {
   width: 140px !important;
   height: 80px !important;
