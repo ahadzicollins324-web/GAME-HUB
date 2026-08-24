@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Strike | GameHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#games">Games</a>
+    <a href="index.html#news">News</a>
+    <a href="index.html#players">Players</a>
+  </nav>
+
+  <main class="game-page">
+    <img src="cyber-strike.png" alt="Cyber Strike">
+
+    <h1>CYBER STRIKE</h1>
+
+    <p>
+      Enter the futuristic battlefield, take on powerful enemies,
+      and fight your way to victory.
+    </p>
+
+    <button onclick="startGame()">START GAME</button>
+
+    <p id="game-message"></p>
+  </main>
+
+  <script>
+    function startGame() {
+      document.getElementById("game-message").textContent =
+        "🎮 Cyber Strike is starting...";
+    }
+  </script>
+
+</body>
+</html>
