@@ -236,3 +236,16 @@ footer {
 .play-button:hover {
   transform: scale(1.05);
 }
+html {
+  scroll-behavior: smooth;
+}
+
+nav a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #4deaff;
+  text-shadow: 0 0 10px #4deaff;
+  }
