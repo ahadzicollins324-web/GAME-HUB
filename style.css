@@ -154,3 +154,12 @@ footer {
     margin: 10px 0;
   }
 }
+ .game-image {
+  width: 100%;
+  max-width: 280px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 15px;
+ }
