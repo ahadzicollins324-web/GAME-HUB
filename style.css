@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #050816;
+  color: #ffffff;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 7%;
+  background: #080d20;
+  border-bottom: 1px solid #1c2b50;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 28px;
+  letter-spacing: 4px;
+  color: #4deaff;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+nav a:hover {
+  color: #4deaff;
+}
+
+section {
+  padding: 80px 7%;
+}
+
+#home {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #07122d, #050816);
+}
+
+#home h2 {
+  font-size: clamp(42px, 8vw, 90px);
+  max-width: 800px;
+  color: #4deaff;
+  margin-bottom: 20px;
+}
+
+#home p {
+  font-size: 20px;
+  max-width: 600px;
+  color: #b8c5df;
+  margin-bottom: 30px;
+}
+
+#home a,
+button {
+  display: inline-block;
+  width: fit-content;
+  padding: 15px 25px;
+  background: #4deaff;
+  color: #020611;
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#home a:hover,
+button:hover {
+  transform: translateY(-3px);
+}
+
+#games {
+  text-align: center;
+}
+
+#games h2,
+#news h2,
+#players h2 {
+  font-size: 38px;
+  margin-bottom: 40px;
+  color: #4deaff;
+}
+
+#games > div {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+  min-width: 250px;
+  margin: 1%;
+  padding: 30px;
+  background: #0b1228;
+  border: 1px solid #1c3860;
+}
+
+#games h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+#games p {
+  color: #aebbd4;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+#news,
+#players {
+  background: #080d20;
+}
+
+#players p {
+  padding: 15px;
+  margin: 10px 0;
+  background: #0b1228;
+  border-left: 3px solid #4deaff;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #71809c;
+  border-top: 1px solid #1c2b50;
+}
+
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav a {
+    margin: 0 6px;
+  }
+
+  #games > div {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
