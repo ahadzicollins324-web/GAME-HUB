@@ -154,12 +154,11 @@ footer {
     margin: 10px 0;
   }
 }
- .game-image {
-  width: 100%;
-  max-width: 280px;
-  height: 160px;
+.game-image {
+  width: 180px !important;
+  height: 100px !important;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 10px;
   display: block;
-  margin: 0 auto 15px;
- }
+  margin: 0 auto 12px;
+}
