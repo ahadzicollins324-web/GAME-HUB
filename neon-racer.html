@@ -1,221 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Racer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Racer</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            background: #050816;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            overflow: hidden;
-        }
+    body {
+      margin: 0;
+      background: #080018;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
 
-        h1 {
-            color: #42e8ff;
-            text-shadow: 0 0 15px #42e8ff;
-            margin: 15px 0 5px;
-        }
+    h1 {
+      margin-top: 30px;
+      color: #00ffff;
+      text-shadow: 0 0 15px #00ffff;
+    }
 
-        #score {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
+    .game {
+      width: 320px;
+      height: 500px;
+      margin: 20px auto;
+      background: #111;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 25px #00ffff;
+      position: relative;
+      overflow: hidden;
+    }
 
-        canvas {
-            display: block;
-            margin: auto;
-            background: #11152b;
-            border: 2px solid #42e8ff;
-            box-shadow: 0 0 20px #42e8ff;
-        }
+    .road {
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        #222 0px,
+        #222 40px,
+        #333 40px,
+        #333 80px
+      );
+    }
 
-        .controls {
-            margin-top: 15px;
-        }
+    .car {
+      position: absolute;
+      bottom: 25px;
+      left: 135px;
+      width: 50px;
+      height: 80px;
+      background: #ff0055;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #ff0055;
+    }
 
-        button {
-            width: 100px;
-            height: 55px;
-            margin: 5px;
-            border: none;
-            border-radius: 12px;
-            background: #42e8ff;
-            color: #050816;
-            font-size: 25px;
-            font-weight: bold;
-        }
+    .car::before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 25px;
+      background: #00ffff;
+      left: 10px;
+      top: 10px;
+      border-radius: 5px;
+    }
 
-        button:active {
-            transform: scale(0.95);
-        }
-    </style>
+    .controls {
+      margin: 20px;
+    }
+
+    button {
+      padding: 15px 25px;
+      margin: 5px;
+      border: none;
+      border-radius: 10px;
+      background: #00ffff;
+      color: #000;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00ffff;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .back {
+      background: #ff0055;
+      color: white;
+      box-shadow: 0 0 15px #ff0055;
+    }
+  </style>
 </head>
 
 <body>
 
-    <h1>NEON RACER</h1>
+  <h1>🏎️ NEON RACER</h1>
 
-    <div id="score">Score: 0</div>
+  <div class="game">
+    <div class="road"></div>
+    <div class="car" id="car"></div>
+  </div>
 
-    <canvas id="game" width="360" height="500"></canvas>
+  <div class="controls">
+    <button onclick="moveLeft()">⬅ LEFT</button>
+    <button onclick="moveRight()">RIGHT ➡</button>
+  </div>
 
-    <div class="controls">
-        <button onclick="moveLeft()">⬅</button>
-        <button onclick="moveRight()">➡</button>
-    </div>
+  <button class="back" onclick="goBack()">← BACK TO GAMES</button>
 
-    <script>
-        const canvas = document.getElementById("game");
-        const ctx = canvas.getContext("2d");
+  <script>
+    const car = document.getElementById("car");
+    let position = 135;
 
-        let car = {
-            x: 155,
-            y: 420,
-            width: 50,
-            height: 80
-        };
+    function moveLeft() {
+      position -= 30;
 
-        let enemy = {
-            x: Math.random() * 300,
-            y: -100,
-            width: 50,
-            height: 80
-        };
+      if (position < 10) {
+        position = 10;
+      }
 
-        let score = 0;
-        let gameOver = false;
+      car.style.left = position + "px";
+    }
 
-        function drawCar() {
-            ctx.fillStyle = "#00eaff";
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = "#00eaff";
+    function moveRight() {
+      position += 30;
 
-            ctx.fillRect(
-                car.x,
-                car.y,
-                car.width,
-                car.height
-            );
+      if (position > 260) {
+        position = 260;
+      }
 
-            ctx.shadowBlur = 0;
-        }
+      car.style.left = position + "px";
+    }
 
-        function drawEnemy() {
-            ctx.fillStyle = "#ff1493";
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = "#ff1493";
-
-            ctx.fillRect(
-                enemy.x,
-                enemy.y,
-                enemy.width,
-                enemy.height
-            );
-
-            ctx.shadowBlur = 0;
-        }
-
-        function drawRoad() {
-            ctx.fillStyle = "#080b18";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.strokeStyle = "#42e8ff";
-            ctx.lineWidth = 4;
-
-            ctx.beginPath();
-            ctx.moveTo(40, 0);
-            ctx.lineTo(40, canvas.height);
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.moveTo(320, 0);
-            ctx.lineTo(320, canvas.height);
-            ctx.stroke();
-
-            ctx.strokeStyle = "#ffffff";
-            ctx.lineWidth = 3;
-
-            for (let y = 0; y < canvas.height; y += 80) {
-                ctx.beginPath();
-                ctx.moveTo(180, y);
-                ctx.lineTo(180, y + 40);
-                ctx.stroke();
-            }
-        }
-
-        function collision() {
-            return (
-                car.x < enemy.x + enemy.width &&
-                car.x + car.width > enemy.x &&
-                car.y < enemy.y + enemy.height &&
-                car.y + car.height > enemy.y
-            );
-        }
-
-        function update() {
-            if (gameOver) return;
-
-            enemy.y += 5;
-
-            if (enemy.y > canvas.height) {
-                enemy.y = -100;
-                enemy.x = 50 + Math.random() * 210;
-                score++;
-                document.getElementById("score").innerText =
-                    "Score: " + score;
-            }
-
-            if (collision()) {
-                gameOver = true;
-                alert("GAME OVER! Score: " + score);
-                location.reload();
-            }
-        }
-
-        function draw() {
-            drawRoad();
-            drawCar();
-            drawEnemy();
-            update();
-
-            if (!gameOver) {
-                requestAnimationFrame(draw);
-            }
-        }
-
-        function moveLeft() {
-            if (car.x > 45) {
-                car.x -= 40;
-            }
-        }
-
-        function moveRight() {
-            if (car.x < 265) {
-                car.x += 40;
-            }
-        }
-
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "ArrowLeft") {
-                moveLeft();
-            }
-
-            if (event.key === "ArrowRight") {
-                moveRight();
-            }
-        });
-
-        draw();
-    </script>
+    function goBack() {
+      window.location.href = "games.html";
+    }
+  </script>
 
 </body>
 </html>
